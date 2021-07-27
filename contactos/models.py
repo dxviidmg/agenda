@@ -10,6 +10,13 @@ Ejercicio: Una agenda donde se puedan dar de alta contactos, cada contacto tiene
 class Contact(models.Model):
     name = models.CharField(max_length=15)
     last_name = models.CharField(max_length=15)
+
+    def get_full_name(self):
+        return self.name + ' ' + self.last_name
+
+    def __str__(self):
+        return self.get_full_name()
+
     
 
 class Phone(models.Model):
@@ -22,7 +29,7 @@ class Phone(models.Model):
     type_phone = models.CharField(max_length=10, choices=type_choices, default='Celular')
 
 
-class EmailAlternative(models.Model):
+class Email(models.Model):
     contact = models.ForeignKey(Contact, on_delete = models.CASCADE)
     email = models.EmailField(max_length=15)
 

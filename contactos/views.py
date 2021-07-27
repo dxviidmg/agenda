@@ -1,3 +1,9 @@
 from django.shortcuts import render
+from contactos.models import Contact
+from django.views.generic.list import ListView
 
-# Create your views here.
+
+class ContactsListView(ListView):
+	model = Contact
+
+

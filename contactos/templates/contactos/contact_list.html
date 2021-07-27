@@ -1,0 +1,31 @@
+{%block content%}
+
+	<div>
+		<table>
+			<thead>
+				<th>Regiones</th>
+			</thead>
+			<thead>
+				<th>Nombre</th>	
+			</thead>
+			<tbody>
+
+	{%for contact in object_list%}
+
+				<tr>
+					<td>{{contact.get_full_name}}</td>
+				</tr>
+	
+	{%empty%}
+	
+				<tr>
+					<td>Lista de contactos vacia</td>
+				</tr>
+
+	{%endfor%}
+
+			</tbody>
+		</table>
+	</div>
+
+{%endblock content%}
