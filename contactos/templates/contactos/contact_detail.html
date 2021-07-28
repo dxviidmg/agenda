@@ -1,0 +1,98 @@
+{% extends 'base.html'%}
+
+{%block content%}
+
+	<div>
+		<a href="{%url 'contacts:contact-list'%}">Regresar</a>
+		<h1> Name: {{object.get_full_name}}</h1>
+	</div>
+	<div>
+
+	<div>
+		<h2>Phones</h2>
+	</div>
+	<div class="table-responsive text-center">
+		<table class="table" >
+			<thead>
+				<th>Phone</th>	
+				<th>Type</th>	
+			</thead>
+			<tbody>
+
+	{%for phone in phones%}
+
+				<tr>
+					<td>{{phone.number}}</td>
+					<td>{{phone.type_phone}}</td>
+				</tr>
+	
+	{%empty%}
+	
+				<tr>
+					<td>Empty contact list</td>
+				</tr>
+
+	{%endfor%}
+
+			</tbody>
+		</table>
+	</div>
+
+
+	<div>
+		<h2>Emails</h2>
+	</div>
+	<div class="table-responsive text-center">
+		<table class="table" >
+			<thead>
+				<th>Email</th>	
+			</thead>
+			<tbody>
+
+	{%for email in emails%}
+
+				<tr>
+					<td>{{email.email}}</td>
+				</tr>
+	
+	{%empty%}
+	
+				<tr>
+					<td>Empty email list</td>
+				</tr>
+
+	{%endfor%}
+
+			</tbody>
+		</table>
+	</div>
+
+
+	<div>
+		<h2>Addresses</h2>
+	</div>
+	<div class="table-responsive text-center">
+		<table class="table" >
+			<thead>
+				<th>Address</th>	
+			</thead>
+			<tbody>
+
+	{%for adress in adresses%}
+
+				<tr>
+					<td>{{adress.concatenate}}</td>
+				</tr>
+	
+	{%empty%}
+	
+				<tr>
+					<td>Empty address list</td>
+				</tr>
+
+	{%endfor%}
+
+			</tbody>
+		</table>
+	</div>
+{%endblock content%}

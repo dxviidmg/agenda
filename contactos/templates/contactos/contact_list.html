@@ -1,25 +1,27 @@
+{% extends 'base.html'%}
+
 {%block content%}
 
 	<div>
-		<table>
+		<h1>Contacts list</h1>
+	</div>
+	<div class="table-responsive text-center">
+		<table class="table" >
 			<thead>
-				<th>Regiones</th>
-			</thead>
-			<thead>
-				<th>Nombre</th>	
+				<th>Names</th>
 			</thead>
 			<tbody>
 
 	{%for contact in object_list%}
 
 				<tr>
-					<td>{{contact.get_full_name}}</td>
+					<td><a href="{%url 'contacts:contact-detail' contact.pk%}">{{contact.get_full_name}} </a></td>
 				</tr>
 	
 	{%empty%}
 	
 				<tr>
-					<td>Lista de contactos vacia</td>
+					<td>Empty contact list</td>
 				</tr>
 
 	{%endfor%}
