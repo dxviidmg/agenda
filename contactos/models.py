@@ -39,6 +39,11 @@ class Email(models.Model):
         return self.email
 
 class Address(models.Model):
+    type_choices = (
+        ('Personal', 'Personal'),
+        ('Work', 'Work'),
+    )
+
     contact = models.ForeignKey(Contact, on_delete = models.CASCADE)
     street = models.CharField(max_length=15)
     outdoor_Number = models.CharField(max_length=15)
@@ -47,6 +52,7 @@ class Address(models.Model):
     province = models.CharField(max_length=15)
     country = models.CharField(max_length=15)
     CP = models.CharField(max_length=5)
+    type_address = models.CharField(max_length=10, choices=type_choices, default='Personal')
 
     def concatenate(self):
         
@@ -56,5 +62,5 @@ class Address(models.Model):
         return c
     
     def __str__(self):
-        return self.concatenate
+        return self.concatenate()
 

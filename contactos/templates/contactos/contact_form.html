@@ -1,0 +1,15 @@
+{% extends 'base.html'%}
+
+{%block content%}
+
+    <a href="{%url 'contacts:contact-list'%}">Regresar</a>
+
+	<h1>{%if object%} Update {%else%} Create {%endif%} contact</h1>
+
+	<form method="post" enctype="multipart/form-data">
+		{%csrf_token%}
+		{{form}}
+		<input type="submit" value="Guardar">
+	</form>
+
+{%endblock content%}
