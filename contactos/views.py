@@ -25,6 +25,19 @@ class ContactDetailView(DetailView):
 class ContactCreateView(CreateView):
 	model = Contact
 	fields = ['name', 'last_name']
-	
+
 	def get_success_url(self):
 		return reverse('contacts:contact-detail',args=(self.object.pk,))
+
+
+class PhoneCreateView(CreateView):
+	model = Phone
+	fields = ['number', 'type_phone']
+	
+
+	def form_valid(self, form):
+		form.instance.contact_id = self.kwargs.get('pk')
+		return super(PhoneCreateView, self).form_valid(form)
+
+	def get_success_url(self):
+		return reverse('contacts:contact-detail',args=(self.kwargs.get('pk'),))
